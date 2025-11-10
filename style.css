@@ -1,0 +1,222 @@
+/* === General Layout === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f8f4ff, #ece0ff);
+  color: #3d2c47;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* === Main Container === */
+.container {
+  background: #ffffffee;
+  max-width: 650px;
+  width: 90%;
+  margin: 40px 0;
+  padding: 35px 45px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(123, 64, 191, 0.15);
+  animation: fadeIn 1s ease-in-out;
+  backdrop-filter: blur(5px);
+  transition: background 0.4s, box-shadow 0.4s;
+}
+
+/* === Heading === */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #5b338e;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* === Labels & Inputs === */
+label {
+  display: block;
+  margin: 12px 0 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #3f2a64;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #c8a9ff;
+  border-radius: 12px;
+  background-color: #fdfaff;
+  font-size: 1rem;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #a16eff;
+  outline: none;
+  box-shadow: 0 0 8px #d1b3ff;
+}
+
+/* === Buttons === */
+button {
+  background: linear-gradient(135deg, #a16eff, #8644d8);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  margin-top: 25px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  font-weight: 500;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #7f45d2, #5e2ca5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(131, 58, 180, 0.3);
+}
+
+/* === Quiz Questions === */
+.question {
+  margin-bottom: 25px;
+  padding: 18px;
+  background: #f6edff;
+  border-radius: 15px;
+  border: 1px solid #d8bfff;
+  transition: 0.3s;
+}
+
+.question:hover {
+  box-shadow: 0 4px 15px rgba(156, 84, 255, 0.2);
+}
+
+/* === Result Section === */
+.result {
+  background: #faf5ff;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 25px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(131, 58, 180, 0.2);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.result h2 {
+  color: #6f32b9;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.result p {
+  font-size: 1rem;
+  color: #4b2d73;
+}
+
+/* === Animation === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px 25px;
+    border-radius: 20px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    align-items: stretch;
+  }
+  .container {
+    width: 94%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  label {
+    font-size: 0.9rem;
+  }
+  input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  button {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
+/* === 🌙 Dark Mode === */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1124, #2b1840);
+    color: #e7dbff;
+  }
+
+  .container {
+    background: #2a1b3d;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  h1 {
+    color: #d1b3ff;
+  }
+
+  label {
+    color: #dcd0ff;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    background-color: #3b2b50;
+    color: #f4ebff;
+    border-color: #8e6ddf;
+  }
+
+  input:focus {
+    border-color: #b68aff;
+    box-shadow: 0 0 8px #a87dff;
+  }
+
+  .question {
+    background: #3b2b50;
+    border-color: #8e6ddf;
+  }
+
+  .result {
+    background: #a87dff;
+    color: #f4ebff;
+  }
+
+  button {
+    background: linear-gradient(135deg, #9a6aff, #6e3fd6);
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #7f4af0, #5630b8);
+  }
+}
