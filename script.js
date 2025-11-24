@@ -203,7 +203,7 @@ resultDiv.innerHTML = `
     <p><strong>You need :</strong> ${candleName}</p>
     <p>
       <a href="https://merakistore.myeasyorders.com" target="_blank" style="color: #8b5cf6; text-decoration: none; font-weight: bold;">
-        Visit MERAKI Candles 💜
+        Visit MERAKI Store 💜
       </a>
     </p>
   </div>
@@ -236,3 +236,4 @@ resultDiv.innerHTML = `
     })[s]);
   }
 });
+
