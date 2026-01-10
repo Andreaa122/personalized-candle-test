@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Find Your Candle | Meraki</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Language Section (Fullscreen) -->
+  <section id="lang-section" class="fullscreen" style="display:none;">
+    <h1>💜 Find Your Personalized Candle 💜</h1>
+    <p style="font-weight:500; margin-bottom:25px;">🌐 Choose Your Language / اختر لغتك</p>
+    <div class="lang-switch">
+      <button type="button" onclick="setLanguage('en')">EN</button>
+      <button type="button" onclick="setLanguage('ar')">عربي</button>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <!-- STEP 1: USER INFO -->
+    <section id="user-info-section">
+      <h1>💜 Find Your Personalized Candle 💜</h1>
+      <form id="user-info-form">
+        <label for="name">Name</label>
+        <input id="name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" required />
+
+        <button id="next-btn" type="submit">Next</button>
+      </form>
+    </section>
+
+    <!-- STEP 3: QUIZ -->
+    <section id="quiz-section" style="display:none;">
+      <form id="quiz-form">
+        <div id="questions"></div>
+        <button id="submit-btn" type="submit">Submit Answers</button>
+      </form>
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-section" style="display:none;">
+      <div id="result"></div>
+      <button id="restart-btn">Retake Quiz</button>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
