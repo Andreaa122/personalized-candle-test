@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: "Do you check your phone waiting for someone’s message?", options: ["No","Sometimes","Yes, often"] },
     { text: "How long does it take you to fall asleep?", options: ["Few minutes","Some time","Very long"] },
     { text: "When you wake up, how do you feel?", options: ["Fresh","Okay","Tired"] },
-    { text: "When someone says something small to you, do you feel worried?", options: ["No","Sometimes","Yes"] },
+    { text: "When someone says something small to you like (You look tired today or Are you okay) , do you feel worried?", options: ["No","Sometimes","Yes"] },
     { text: "When you sit in a quiet place, what happens in your mind?", options: ["Calm thoughts","Many thoughts","I remember things I want to forget"] },
     { text: "Do you forget where you put things often?", options: ["No","Sometimes","Yes"] },
     { text: "How do you feel when your friends go out without you?", options: ["Fine","A bit sad","Very sad"] },
@@ -209,3 +209,4 @@ document.addEventListener('DOMContentLoaded', () => {
     return String(str).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
   }
 });
+
