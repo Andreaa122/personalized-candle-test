@@ -145,23 +145,110 @@ document.addEventListener('DOMContentLoaded', () => {
       answers[11], answers[12], answers[14], answers[17], answers[19]
     ];
 
-    let candleName = '', emotion = '';
+  // ================= SCIENTIFIC SCORING ENGINE =================
 
-    if ((q3 >= 1 || q13 >= 1) && totalScore <= 20) {
-      candleName = 'Good Night Candle 🕯️'; emotion = 'Insomnia';
-    } else if ((q8 >= 1 || q20 === 2) && totalScore <= 10) {
-      candleName = 'HUG YOU Candle 🕯️'; emotion = 'Lonely';
-    } else if ((q15 >= 1 || q7 === 2) && totalScore <= 10) {
-      candleName = 'FOCAS Candle 🕯️'; emotion = 'to Focus';
-    } else if ((q4 === 2 || q9 === 2 || q12 === 2 || q18 === 2) && totalScore <= 20) {
-      candleName = 'GET UP Candle 🕯️'; emotion = 'Low energy';
-    } else {
-      if(totalScore <= 10){ candleName='No candle — you are okay 💛'; emotion='None'; }
-      else if(totalScore <= 20){ candleName='CALM MOMENTS Candle 🕯️'; emotion='Stress & anxiety & overthinking'; }
-      else if(totalScore <= 30){ candleName='Re-charge-me Candle 🕯️'; emotion='Exhausted'; }
-      else{ candleName='CHEER UP 🕯️'; emotion='Depression'; }
-    }
+// 1️⃣ Indicator flags (from answers)
+const insomnia   = (q3 >= 1 || q13 >= 1);
+const lonely     = (q8 >= 1 || q20 === 2);
+const lowFocus   = (q15 >= 1 || q7 === 2);
+const lowEnergy  = (q4 === 2 || q9 === 2 || q12 === 2 || q18 === 2);
 
+// 2️⃣ Weight constants
+const W = {
+  CHEER_UP: 0.75,
+  RECHARGE: 1.0,
+  CALM: 1.0,
+  GOOD_NIGHT: 1.2,
+  GET_UP: 1.2,
+  HUG_YOU: 1.3,
+  FOCAS: 1.3,
+  NO_CANDLE: 0.6
+};
+
+// 3️⃣ Indicator functions
+const I = {
+  CHEER_UP:   totalScore >= 31,
+  RECHARGE:   totalScore >= 21 && totalScore <= 30,
+  CALM:       totalScore >= 11 && totalScore <= 20,
+  GOOD_NIGHT: insomnia && totalScore <= 20,
+  GET_UP:     lowEnergy && totalScore <= 20,
+  HUG_YOU:    lonely && totalScore <= 10,
+  FOCAS:      lowFocus && totalScore <= 10
+};
+
+// 4️⃣ Raw weights
+const raw = {
+  CHEER_UP:   I.CHEER_UP   ? W.CHEER_UP   : 0,
+  RECHARGE:   I.RECHARGE   ? W.RECHARGE   : 0,
+  CALM:       I.CALM       ? W.CALM       : 0,
+  GOOD_NIGHT: I.GOOD_NIGHT ? W.GOOD_NIGHT : 0,
+  GET_UP:     I.GET_UP     ? W.GET_UP     : 0,
+  HUG_YOU:    I.HUG_YOU    ? W.HUG_YOU    : 0,
+  FOCAS:      I.FOCAS      ? W.FOCAS      : 0
+};
+
+// 5️⃣ No-candle logic
+const sumRaw = Object.values(raw).reduce((a,b)=>a+b,0);
+if(sumRaw === 0){
+  raw.NO_CANDLE = W.NO_CANDLE;
+}
+
+// 6️⃣ Normalize
+const totalWeight = Object.values(raw).reduce((a,b)=>a+b,0);
+const probabilities = {};
+for(const k in raw){
+  probabilities[k] = raw[k] / totalWeight;
+}
+
+// 7️⃣ Weighted random pick
+function pickWeighted(obj){
+  let r = Math.random();
+  let acc = 0;
+  for(const k in obj){
+    acc += obj[k];
+    if(r <= acc) return k;
+  }
+}
+
+const picked = pickWeighted(probabilities);
+
+// 8️⃣ Map to existing UI strings (UNCHANGED)
+let candleName = '';
+let emotion = '';
+
+switch(picked){
+  case 'GOOD_NIGHT':
+    candleName = 'Good Night Candle 🕯️';
+    emotion = 'Insomnia';
+    break;
+  case 'GET_UP':
+    candleName = 'GET UP Candle 🕯️';
+    emotion = 'Low energy';
+    break;
+  case 'HUG_YOU':
+    candleName = 'HUG YOU Candle 🕯️';
+    emotion = 'Lonely';
+    break;
+  case 'FOCAS':
+    candleName = 'FOCAS Candle 🕯️';
+    emotion = 'to Focus';
+    break;
+  case 'CALM':
+    candleName = 'CALM MOMENTS Candle 🕯️';
+    emotion = 'Stress & anxiety & overthinking';
+    break;
+  case 'RECHARGE':
+    candleName = 'Re-charge-me Candle 🕯️';
+    emotion = 'Exhausted';
+    break;
+  case 'CHEER_UP':
+    candleName = 'CHEER UP 🕯️';
+    emotion = 'Depression';
+    break;
+  default:
+    candleName = 'No candle — you are okay 💛';
+    emotion = 'None';
+}
     // Send data to Google Sheet
     const scriptURL = "https://script.google.com/macros/s/AKfycbxWIr0svgEIDUoLb8hGINvB1GoY2IkerSJHCBsHaRPCGhvzLDBUArNuzaktZP9rbftk/exec";
     const formData = new FormData();
