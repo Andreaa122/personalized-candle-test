@@ -15,57 +15,57 @@ document.addEventListener('DOMContentLoaded', () => {
   const userData = {};
 
   // Questions bilingual
-  const questions_en = [
-    { text: "When you listen to sad songs, how do you feel?", options: ["I skip them","I enjoy them","I feel they talk about me"] },
-    { text: "Do you check your phone waiting for someone’s message?", options: ["No","Sometimes","Yes, often"] },
-    { text: "How long does it take you to fall asleep?", options: ["Few minutes","Some time","Very long"] },
-    { text: "When you wake up, how do you feel?", options: ["Fresh","Okay","Tired"] },
-    { text: "When someone says something small to you like (You look tired today or Are you okay) , do you feel worried?", options: ["No","Sometimes","Yes"] },
-    { text: "When you sit in a quiet place, what happens in your mind?", options: ["Calm thoughts","Many thoughts","I remember things I want to forget"] },
-    { text: "Do you forget where you put things often?", options: ["No","Sometimes","Yes"] },
-    { text: "How do you feel when your friends go out without you?", options: ["Fine","A bit sad","Very sad"] },
-    { text: "How often do you feel your body is heavy or slow?", options: ["Never","Sometimes","Often"] },
-    { text: "When was the last time you felt excited for something?", options: ["Today","Last week","I don’t remember"] },
-    { text: "Do you think a lot about past people or memories?", options: ["No","Sometimes","Yes, a lot"] },
-    { text: "When you look at your to-do list, what do you feel?", options: ["Ready to start","Not sure","I don’t want to do it"] },
-    { text: "Do you stay awake at night thinking?", options: ["No","Sometimes","Yes, a lot"] },
-    { text: "Do you feel happy when people are around you?", options: ["Yes","Sometimes","Not really"] },
-    { text: "When you try to study or work, can you focus?", options: ["Yes","A little","No"] },
-    { text: "Do you feel tired even after resting or sleeping?", options: ["No","Sometimes","Yes"] },
-    { text: "How often do you smile during your day?", options: ["A lot","Sometimes","Rarely"] },
-    { text: "Do you find it easy to start your day?", options: ["Yes","Sometimes","No"] },
-    { text: "When someone asks 'How are you?', what do you say?", options: ["I’m great","I’m okay","I just say 'fine'"] },
-    { text: "Do you feel like you need to disappear for a while to rest?", options: ["No","Sometimes","Yes"] },
-    { text: "When you see things you want to buy, what do you feel?", options: ["I can get them easily","I think a little","I worry a lot"] },
-    { text: "Do you often think about what you will do next year or in the future?", options: ["No, I don’t think","Sometimes I think","Yes, I think a lot"] },
-    { text: "When you imagine living alone, what comes to your mind first?", options: ["I feel excited and ready","I feel okay but need money","I feel worried or stressed"] }
-  ];
+    const questions_en = [
+  { text: "When you listen to sad songs, how do you feel?", options: ["I just skip them", "I enjoy them", "I feel they reflect me deeply"] },
+  { text: "Do you check your phone waiting for someone’s message?", options: ["I don’t check", "Sometimes I check", "I check constantly and feel anxious"] },
+  { text: "How long does it take you to fall asleep?", options: ["I fall asleep quickly", "It takes me a while", "I struggle and lie awake"] },
+  { text: "When you wake up, how do you feel?", options: ["Fresh and energized", "Okay, not fully awake", "Tired and sluggish"] },
+  { text: "When someone says something small to you, do you feel worried?", options: ["Not at all", "Sometimes a little", "Yes, I feel concerned"] },
+  { text: "When you sit in a quiet place, what happens in your mind?", options: ["My thoughts are calm", "I have many thoughts", "I recall things I’d rather forget"] },
+  { text: "Do you forget where you put things often?", options: ["Rarely or never", "Sometimes", "Yes, frequently"] },
+  { text: "How do you feel when your friends go out without you?", options: ["Fine", "A little sad", "Very sad or left out"] },
+  { text: "How often do you feel your body is heavy or slow?", options: ["Never", "Sometimes", "Often"] },
+  { text: "When was the last time you felt excited for something?", options: ["Today", "Last week", "I can’t remember the last time"] },
+  { text: "Do you think a lot about past people or memories?", options: ["Rarely", "Sometimes", "Very often"] },
+  { text: "When you look at your to-do list, what do you feel?", options: ["Ready to start", "Unsure", "I don’t want to do it"] },
+  { text: "Do you stay awake at night thinking?", options: ["Rarely", "Sometimes", "Yes, often"] },
+  { text: "Do you feel happy when people are around you?", options: ["Yes, very happy", "Sometimes", "Not really"] },
+  { text: "When you try to study or work, can you focus?", options: ["Yes, easily", "A little", "No, I get distracted"] },
+  { text: "Do you feel tired even after resting or sleeping?", options: ["No, fully rested", "Sometimes", "Yes, still tired"] },
+  { text: "How often do you smile during your day?", options: ["A lot", "Sometimes", "Rarely"] },
+  { text: "Do you find it easy to start your day?", options: ["Yes, easily", "Sometimes", "No, I struggle"] },
+  { text: "When someone asks 'How are you?', what do you say?", options: ["I feel great", "I feel okay", "I just say 'fine'"] },
+  { text: "Do you feel like you need to disappear for a while to rest?", options: ["No", "Sometimes", "Yes, very much"] },
+  { text: "When you see things you want to buy, what do you feel?", options: ["I can get them easily", "I think a little before", "I worry a lot"] },
+  { text: "Do you often think about what you will do next year or in the future?", options: ["Rarely", "Sometimes", "Very often"] },
+  { text: "When you imagine living alone, what comes to your mind first?", options: ["I feel excited and ready", "I feel okay but need money", "I feel worried or stressed"] }
+];
 
   const questions_ar = [
-    { text: "عندما تستمع إلى الأغاني الحزينة، كيف تشعر؟", options: ["أتجاوزها","أستمتع لها","أشعر أنها تتحدث عني"] },
-    { text: "هل تتحقق من هاتفك انتظاراً لرسالة شخص ما؟", options: ["لا","أحياناً","نعم غالباً"] },
-    { text: "كم من الوقت يستغرقك للنوم؟", options: ["دقائق قليلة","بعض الوقت","وقت طويل"] },
-    { text: "عندما تستيقظ، كيف تشعر؟", options: ["نشاط","حسناً","تعب"] },
-    { text: "عندما يقول لك شخص شيئاً بسيطاً مثل(تبدو متعباً اليوم، هل أنت بخير؟)، هل تشعر بالقلق؟", options: ["لا","أحياناً","نعم"] },
-    { text: "عندما تجلس في مكان هادئ، ماذا يحدث في ذهنك؟", options: ["أفكار هادئة","أفكار كثيرة","أتذكر أشياء أريد نسيانها"] },
-    { text: "هل تنسى أين وضعت الأشياء غالباً؟", options: ["لا","أحياناً","نعم"] },
-    { text: "كيف تشعر عندما يخرج أصدقاؤك بدونك؟", options: ["بخير","حزين قليلاً","حزين جداً"] },
-    { text: "كم مرة تشعر أن جسمك ثقيل أو بطيء؟", options: ["أبداً","أحياناً","غالباً"] },
-    { text: "متى كانت آخر مرة شعرت بالحماس لشيء؟", options: ["اليوم","الأسبوع الماضي","لا أتذكر"] },
-    { text: "هل تفكر كثيراً في أشخاص أو ذكريات من الماضي؟", options: ["لا","أحياناً","نعم، كثير"] },
-    { text: "عندما تنظر إلى قائمة المهام، ماذا تشعر؟", options: ["جاهز للبدء","لست متأكداً","لا أرغب في فعلها"] },
-    { text: "هل تبقى مستيقظاً في الليل تفكر؟", options: ["لا","أحياناً","نعم، كثيراً"] },
-    { text: "هل تشعر بالسعادة عندما يكون الناس حولك؟", options: ["نعم","أحياناً","ليس حقاً"] },
-    { text: "عندما تحاول الدراسة أو العمل، هل يمكنك التركيز؟", options: ["نعم","قليلاً","لا"] },
-    { text: "هل تشعر بالتعب حتى بعد الراحة أو النوم؟", options: ["لا","أحياناً","نعم"] },
-    { text: "كم مرة تبتسم خلال يومك؟", options: ["كثيراً","أحياناً","نادراً"] },
-    { text: "هل تجد أنه من السهل بدء يومك؟", options: ["نعم","أحياناً","لا"] },
-    { text: "عندما يسألك أحدهم 'كيف حالك؟' ماذا تقول؟", options: ["أنا بخير","أنا جيد","أقول فقط 'تمام'"] },
-    { text: "هل تشعر أنك بحاجة للاختفاء لبعض الوقت للراحة؟", options: ["لا","أحياناً","نعم"] },
-    { text: "عندما ترى أشياء تريد شرائها لنفسك، ماذا تشعر؟", options: ["يمكنني الحصول عليها بسهولة","أفكر قليلاً","أقلق كثيراً حول كيفية الدفع"] },
-    { text: "هل تفكر غالباً فيما ستفعله في السنة القادمة أو المستقبل؟", options: ["لا، لا أفكر","أحياناً أفكر","نعم، أفكر كثيراً"] },
-    { text: "عندما تتخيل العيش وحدك، ما أول ما يخطر في بالك؟", options: ["أشعر بالحماس والاستعداد","أشعر بخير لكن أحتاج المال","أشعر بالقلق أو التوتر"] }
-  ];
+  { text: "عندما تستمع إلى الأغاني الحزينة، كيف تشعر؟", options: ["أتجاوزها فقط", "أستمتع بها", "أشعر أنها تعكسني بعمق"] },
+  { text: "هل تتحقق من هاتفك انتظاراً لرسالة شخص ما؟", options: ["لا أتحقق", "أتحقق أحياناً", "أتحقق باستمرار وأشعر بالقلق"] },
+  { text: "كم من الوقت يستغرقك للنوم؟", options: ["أنام بسرعة", "يستغرق الأمر بعض الوقت", "أجد صعوبة وأبقى مستيقظاً"] },
+  { text: "عندما تستيقظ، كيف تشعر؟", options: ["نشاط وحيوية", "حسناً، لست منتعشاً بالكامل", "تعب وكسل"] },
+  { text: "عندما يقول لك شخص شيئاً بسيطاً، هل تشعر بالقلق؟", options: ["لا على الإطلاق", "أحياناً قليلاً", "نعم، أشعر بالقلق"] },
+  { text: "عندما تجلس في مكان هادئ، ماذا يحدث في ذهنك؟", options: ["أفكاري هادئة", "أفكر كثيراً", "أتذكر أشياء أفضل لو نسيتها"] },
+  { text: "هل تنسى أين وضعت الأشياء غالباً؟", options: ["نادراً أو أبداً", "أحياناً", "نعم، كثيراً"] },
+  { text: "كيف تشعر عندما يخرج أصدقاؤك بدونك؟", options: ["بخير", "حزين قليلاً", "حزين جداً أو مهمل"] },
+  { text: "كم مرة تشعر أن جسمك ثقيل أو بطيء؟", options: ["أبداً", "أحياناً", "غالباً"] },
+  { text: "متى كانت آخر مرة شعرت بالحماس لشيء؟", options: ["اليوم", "الأسبوع الماضي", "لا أتذكر آخر مرة"] },
+  { text: "هل تفكر كثيراً في أشخاص أو ذكريات من الماضي؟", options: ["نادراً", "أحياناً", "كثيراً"] },
+  { text: "عندما تنظر إلى قائمة المهام، ماذا تشعر؟", options: ["جاهز للبدء", "غير متأكد", "لا أرغب في القيام بها"] },
+  { text: "هل تبقى مستيقظاً في الليل تفكر؟", options: ["نادراً", "أحياناً", "نعم، كثيراً"] },
+  { text: "هل تشعر بالسعادة عندما يكون الناس حولك؟", options: ["نعم، سعيد جداً", "أحياناً", "ليس حقاً"] },
+  { text: "عندما تحاول الدراسة أو العمل، هل يمكنك التركيز؟", options: ["نعم، بسهولة", "قليلاً", "لا، أشتت انتباهي"] },
+  { text: "هل تشعر بالتعب حتى بعد الراحة أو النوم؟", options: ["لا، منتعش تماماً", "أحياناً", "نعم، لا زلت متعباً"] },
+  { text: "كم مرة تبتسم خلال يومك؟", options: ["كثيراً", "أحياناً", "نادراً"] },
+  { text: "هل تجد أنه من السهل بدء يومك؟", options: ["نعم، بسهولة", "أحياناً", "لا، أجد صعوبة"] },
+  { text: "عندما يسألك أحدهم 'كيف حالك؟' ماذا تقول؟", options: ["أشعر بأنني بخير", "أشعر بحالة جيدة", "أقول فقط 'تمام'"] },
+  { text: "هل تشعر أنك بحاجة للاختفاء لبعض الوقت للراحة؟", options: ["لا", "أحياناً", "نعم، كثيراً"] },
+  { text: "عندما ترى أشياء تريد شرائها لنفسك، ماذا تشعر؟", options: ["يمكنني الحصول عليها بسهولة", "أفكر قليلاً قبل الشراء", "أقلق كثيراً حول كيفية الدفع"] },
+  { text: "هل تفكر غالباً فيما ستفعله في السنة القادمة أو المستقبل؟", options: ["نادراً", "أحياناً", "كثيراً"] },
+  { text: "عندما تتخيل العيش وحدك، ما أول ما يخطر في بالك؟", options: ["أشعر بالحماس والاستعداد", "أشعر بخير لكن أحتاج المال", "أشعر بالقلق أو التوتر"] }
+];
 
   // --- Step 1: Submit user info ---
   userInfoForm.addEventListener('submit', (e) => {
@@ -296,5 +296,6 @@ switch(picked){
     return String(str).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
   }
 });
+
 
 
