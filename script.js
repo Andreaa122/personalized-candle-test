@@ -15,12 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const userData = {};
 
   // Questions bilingual
-    const questions_en = [
+  const questions_en = [
   { text: "When you listen to sad songs, how do you feel?", options: ["I just skip them", "I enjoy them", "I feel they reflect me deeply"] },
   { text: "Do you check your phone waiting for someone’s message?", options: ["I don’t check", "Sometimes I check", "I check constantly and feel anxious"] },
   { text: "How long does it take you to fall asleep?", options: ["I fall asleep quickly", "It takes me a while", "I struggle and lie awake"] },
   { text: "When you wake up, how do you feel?", options: ["Fresh and energized", "Okay, not fully awake", "Tired and sluggish"] },
-  { text: "When someone says something small to you (like you look tired or Are you okay), do you feel worried?", options: ["Not at all", "Sometimes a little", "Yes, I feel concerned"] },
+  { text: "When someone says something small to you, do you feel worried?", options: ["Not at all", "Sometimes a little", "Yes, I feel concerned"] },
   { text: "When you sit in a quiet place, what happens in your mind?", options: ["My thoughts are calm", "I have many thoughts", "I recall things I’d rather forget"] },
   { text: "Do you forget where you put things often?", options: ["Rarely or never", "Sometimes", "Yes, frequently"] },
   { text: "How do you feel when your friends go out without you?", options: ["Fine", "A little sad", "Very sad or left out"] },
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   { text: "هل تتحقق من هاتفك انتظاراً لرسالة شخص ما؟", options: ["لا أتحقق", "أتحقق أحياناً", "أتحقق باستمرار وأشعر بالقلق"] },
   { text: "كم من الوقت يستغرقك للنوم؟", options: ["أنام بسرعة", "يستغرق الأمر بعض الوقت", "أجد صعوبة وأبقى مستيقظاً"] },
   { text: "عندما تستيقظ، كيف تشعر؟", options: ["نشاط وحيوية", "حسناً، لست منتعشاً بالكامل", "تعب وكسل"] },
-  { text: "عندما يقول لك شخص شيئاً بسيطاً(تبدو متعباً اليوم" أو "هل أنت بخير؟)، هل تشعر بالقلق؟", options: ["لا على الإطلاق", "أحياناً قليلاً", "نعم، أشعر بالقلق"] },
+  { text: "عندما يقول لك شخص شيئاً بسيطاً، هل تشعر بالقلق؟", options: ["لا على الإطلاق", "أحياناً قليلاً", "نعم، أشعر بالقلق"] },
   { text: "عندما تجلس في مكان هادئ، ماذا يحدث في ذهنك؟", options: ["أفكاري هادئة", "أفكر كثيراً", "أتذكر أشياء أفضل لو نسيتها"] },
   { text: "هل تنسى أين وضعت الأشياء غالباً؟", options: ["نادراً أو أبداً", "أحياناً", "نعم، كثيراً"] },
   { text: "كيف تشعر عندما يخرج أصدقاؤك بدونك؟", options: ["بخير", "حزين قليلاً", "حزين جداً أو مهمل"] },
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
       answers[11], answers[12], answers[14], answers[17], answers[19]
     ];
 
-  // ================= SCIENTIFIC SCORING ENGINE =================
+    // ================= SCIENTIFIC SCORING ENGINE =================
 
 // 1️⃣ Indicator flags (from answers)
 const insomnia   = (q3 >= 1 || q13 >= 1);
@@ -249,6 +249,7 @@ switch(picked){
     candleName = 'No candle — you are okay 💛';
     emotion = 'None';
 }
+
     // Send data to Google Sheet
     const scriptURL = "https://script.google.com/macros/s/AKfycbxWIr0svgEIDUoLb8hGINvB1GoY2IkerSJHCBsHaRPCGhvzLDBUArNuzaktZP9rbftk/exec";
     const formData = new FormData();
@@ -296,8 +297,3 @@ switch(picked){
     return String(str).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
   }
 });
-
-
-
-
-
